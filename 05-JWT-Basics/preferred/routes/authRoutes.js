@@ -10,11 +10,7 @@ const router = express.Router(); //Create instance of express router
 router.post('/logon', authController.login); //Map the /logon route to the login controller function 
 
 //Get route for /api/v1/hello (protected route)
-router.get('/hello', authMiddleware, (req, res) =>
-{
-    res.status(200).json({msg: `Hello, ${req.username}!`});
-    //Map the /hello route to the authMiddleware function and then to route handler function
-});
+router.get('/hello', authMiddleware, authController.hello);
 
 module.exports = router; 
 //Export router for use in app js
